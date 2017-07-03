@@ -7,6 +7,7 @@ require 'pry'
 
 class BinarySearchTreeTest < Minitest::Test
   def test_tree_adds_new_node_and_returns_depth
+    tree = BinarySearchTree.new
     assert_equal(0, tree.insert(61, "Bill & Ted's Excellent Adventure"))
     assert_equal(1, tree.insert(16, "Johnny English"))
     assert_equal(1, tree.insert(92, "Sharknado 3"))
