@@ -33,4 +33,22 @@ class Node
       @right_child.insert(new_node, depth_counter)
     end
   end
+
+  def include?(score)
+    if score == @score
+      true
+    elsif score < @score
+      if @left_child
+        @left_child.include?(score)
+      else
+        false
+      end
+    else
+      if @right_child
+        @right_child.include?(score)
+      else
+        false
+      end
+    end
+  end
 end

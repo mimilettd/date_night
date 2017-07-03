@@ -14,4 +14,7 @@ class BinarySearchTree
       @root.insert(new_node)
     end
   end
+  def include?(score)
+    @root.include?(score)
+  end
 end
