@@ -40,4 +40,13 @@ class BinarySearchTreeTest < Minitest::Test
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     assert_equal({"Sharknado 3"=>92}, tree.max)
   end
+
+  def test_min_returns_lowest_score_in_tree
+    tree = BinarySearchTree.new
+    tree.insert(92, "Sharknado 3")
+    tree.insert(16, "Johnny English")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    assert_equal({"Johnny English"=>16}, tree.min)
+  end
 end

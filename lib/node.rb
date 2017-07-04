@@ -68,6 +68,13 @@ class Node
       @right_child.max
       return @right_child.data
     end
-    binding.pry
   end
+
+  def min
+    if @left_child != nil
+      @left_child.min
+      return @left_child.data
+    end
+  end
+
 end

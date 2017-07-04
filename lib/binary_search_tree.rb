@@ -33,4 +33,8 @@ class BinarySearchTree
     @root.max
   end
 
+  def min
+    @root.min
+  end
+
 end
