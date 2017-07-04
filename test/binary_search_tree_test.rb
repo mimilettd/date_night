@@ -58,6 +58,10 @@ class BinarySearchTreeTest < Minitest::Test
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     assert_equal([{"Johnny English"=>16}, {"Hannibal Buress: Animal Furnace"=>50},
     {"Bill & Ted's Excellent Adventure"=>61}, {"Sharknado 3"=>92}], tree.sort)
-    binding.pry
+  end
+
+  def test_load_where_return_value_is_number_of_movies
+    tree = BinarySearchTree.new
+    assert_equal(99, tree.load('../lib/movies.txt'))
   end
 end

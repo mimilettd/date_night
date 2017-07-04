@@ -2,7 +2,6 @@ require 'pry'
 require '../lib/node'
 
 class BinarySearchTree
-
   def initialize
     @root = nil
   end
@@ -44,4 +43,14 @@ class BinarySearchTree
     end
   end
 
+  def load(file)
+    movies = File.readlines(file)
+    counter = 0
+    movies.each do |movie|
+      strip = movie.strip.split(", ")
+      counter += 1
+      self.insert(strip[0].to_i, strip[1])
+    end
+    counter
+  end
 end
