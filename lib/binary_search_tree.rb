@@ -37,4 +37,11 @@ class BinarySearchTree
     @root.min
   end
 
+  def sort
+    if @root.nil?
+      return
+    else @root.sort
+    end
+  end
+
 end

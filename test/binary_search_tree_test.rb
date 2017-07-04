@@ -49,4 +49,15 @@ class BinarySearchTreeTest < Minitest::Test
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     assert_equal({"Johnny English"=>16}, tree.min)
   end
+
+  def test_sort_returns_an_array_of_data_in_ascending_order
+    tree = BinarySearchTree.new
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    assert_equal([{"Johnny English"=>16}, {"Hannibal Buress: Animal Furnace"=>50},
+    {"Bill & Ted's Excellent Adventure"=>61}, {"Sharknado 3"=>92}], tree.sort)
+    binding.pry
+  end
 end

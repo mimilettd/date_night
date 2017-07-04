@@ -20,7 +20,7 @@ class Node
       # set left_child = new node
       @left_child = new_node
       return depth_counter
-    # if left_child of current node is not nil
+      # if left_child of current node is not nil
     elsif new_node.score < self.score && @left_child != nil
       # call insert on left_child with new node as an argument
       depth_counter += 1
@@ -77,4 +77,15 @@ class Node
     end
   end
 
+  def sort
+    [sort_left_child, @data, sort_right_child].flatten.compact
+  end
+
+  def sort_left_child
+    @left_child.sort unless @left_child.nil?
+  end
+
+  def sort_right_child
+    @right_child.sort unless @right_child.nil?
+  end
 end
