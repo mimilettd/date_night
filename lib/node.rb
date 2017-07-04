@@ -51,4 +51,15 @@ class Node
       end
     end
   end
+
+  def depth_of(score)
+    return self if @score == score
+    if @score > score
+      @left_child.depth_of(score)
+      @depth = @depth +=1
+    else
+      @right_child.depth_of(score)
+      @depth = @depth +=1
+    end
+  end
 end
