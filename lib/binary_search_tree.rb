@@ -29,4 +29,8 @@ class BinarySearchTree
     end
   end
 
+  def max
+    @root.max
+  end
+
 end

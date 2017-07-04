@@ -62,4 +62,12 @@ class Node
       @depth = @depth +=1
     end
   end
+
+  def max
+    if @right_child != nil
+      @right_child.max
+      return @right_child.data
+    end
+    binding.pry
+  end
 end
