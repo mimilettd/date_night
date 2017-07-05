@@ -3,38 +3,44 @@ require 'pry'
 class Node
   attr_reader :score, :title, :data
   attr_accessor :left_child, :right_child, :depth
-  def initialize(score=nil, title=nil)
+  def initialize(score=nil, title=nil, depth = 0)
     @score = score
     @title = title
-    @depth = 0
+    @depth = depth
     @left_child = nil
     @right_child = nil
     @data = { title => score }
   end
 
-  def insert(new_node, depth_counter = 1)
+  def insert(new_node, depth_counter = 0)
     # check new node score against current node score
     # if new node score is less than current node score
     # and left_child of current node is nil
+    depth_counter += 1
     if new_node.score < @score && @left_child == nil
       # set left_child = new node
       @left_child = new_node
-      return depth_counter
+      # return depth_counter
+      # depth_counter += 1
+      @left_child.depth = depth_counter
+      return @left_child.depth
       # if left_child of current node is not nil
     elsif new_node.score < self.score && @left_child != nil
       # call insert on left_child with new node as an argument
-      depth_counter += 1
+      # depth_counter += 1
       @left_child.insert(new_node, depth_counter)
     elsif new_node.score > self.score && @right_child == nil
       @right_child = new_node
-      return depth_counter
+      # depth_counter += 1
+      @right_child.depth = depth_counter
+      return @right_child.depth
     elsif new_node.score > self.score && @right_child != nil
-      depth_counter += 1
+      # depth_counter += 1
       @right_child.insert(new_node, depth_counter)
     end
   end
 
-  def include?(score)
+  def include?(score, depth_counter = 0)
     if score == @score
       true
     elsif score < @score
@@ -53,13 +59,13 @@ class Node
   end
 
   def depth_of(score)
-    return self if @score == score
-    if @score > score
+    if score == @score
+      return depth
+    end
+    if score < @score
       @left_child.depth_of(score)
-      @depth = @depth +=1
     else
-      @right_child.depth_of(score)
-      @depth = @depth +=1
+       @right_child.depth_of(score)
     end
   end
 
@@ -82,10 +88,22 @@ class Node
   end
 
   def sort_left_child
-    @left_child.sort unless @left_child.nil?
+    if @left_child.nil?
+      return
+    else
+      @left_child.sort
+    end
   end
 
   def sort_right_child
-    @right_child.sort unless @right_child.nil?
+    if @right_child.nil?
+      return
+    else
+      @right_child.sort
+    end
+  end
+
+  def health(depth)
+    # create a counter inside this method
   end
 end

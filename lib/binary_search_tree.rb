@@ -2,11 +2,12 @@ require 'pry'
 require '../lib/node'
 
 class BinarySearchTree
+  attr_accessor :root
   def initialize
     @root = nil
   end
 
-  def insert(score, title, depth = 0)
+  def insert(score, title)
     new_node = Node.new(score, title)
     if @root.nil?
       @root = new_node
@@ -21,11 +22,7 @@ class BinarySearchTree
   end
 
   def depth_of(score)
-    if score == nil
-      nil
-    else
-      @root.depth_of(score)
-    end
+    @root.depth_of(score)
   end
 
   def max
@@ -53,4 +50,8 @@ class BinarySearchTree
     end
     counter
   end
+
+  # def health(score)
+  #   @root.depth_of(score)
+  # end
 end
