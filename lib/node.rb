@@ -13,34 +13,23 @@ class Node
   end
 
   def insert(new_node, depth_counter = 0)
-    # check new node score against current node score
-    # if new node score is less than current node score
-    # and left_child of current node is nil
     depth_counter += 1
     if new_node.score < @score && @left_child == nil
-      # set left_child = new node
       @left_child = new_node
-      # return depth_counter
-      # depth_counter += 1
       @left_child.depth = depth_counter
       return @left_child.depth
-      # if left_child of current node is not nil
-    elsif new_node.score < self.score && @left_child != nil
-      # call insert on left_child with new node as an argument
-      # depth_counter += 1
+    elsif new_node.score < @score && @left_child != nil
       @left_child.insert(new_node, depth_counter)
-    elsif new_node.score > self.score && @right_child == nil
+    elsif new_node.score > @score && @right_child == nil
       @right_child = new_node
-      # depth_counter += 1
       @right_child.depth = depth_counter
       return @right_child.depth
-    elsif new_node.score > self.score && @right_child != nil
-      # depth_counter += 1
+    elsif new_node.score > @score && @right_child != nil
       @right_child.insert(new_node, depth_counter)
     end
   end
 
-  def include?(score, depth_counter = 0)
+  def include?(score)
     if score == @score
       true
     elsif score < @score
@@ -83,27 +72,38 @@ class Node
     end
   end
 
-  def sort
+  def sort(sorted_array = [])
     [sort_left_child, @data, sort_right_child].flatten.compact
   end
 
-  def sort_left_child
+  def sort_left_child(sorted_array = [])
     if @left_child.nil?
       return
     else
-      @left_child.sort
+      sorted_array << @left_child.data
+      @left_child.sort(sorted_array)
     end
   end
 
-  def sort_right_child
+  def sort_right_child(sorted_array = [])
     if @right_child.nil?
       return
     else
-      @right_child.sort
+      sorted_array << @right_child.data
+      @right_child.sort(sorted_array)
     end
   end
 
+
   def health(depth)
-    # create a counter inside this method
+    health = []
+    if depth == @depth
+      health << score
+      if @left_child != nil
+        @left_child.health(depth)
+        health << @left_child.count
+      end
+    end
   end
+
 end

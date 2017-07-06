@@ -36,7 +36,8 @@ class BinarySearchTree
   def sort
     if @root.nil?
       return
-    else @root.sort
+    else
+     @root.sort
     end
   end
 
@@ -51,7 +52,7 @@ class BinarySearchTree
     counter
   end
 
-  # def health(score)
-  #   @root.depth_of(score)
+  # def health(depth)
+  #   @root.health(depth)
   # end
 end
