@@ -95,15 +95,15 @@ class Node
   end
 
 
-  def health(depth)
-    health = []
-    if depth == @depth
-      health << score
-      if @left_child != nil
-        @left_child.health(depth)
-        health << @left_child.count
-      end
-    end
-  end
+  # def health(depth)
+  #   health = []
+  #   if depth == @depth
+  #     health << score
+  #     if @left_child != nil
+  #       @left_child.health(depth)
+  #       health << @left_child.count
+  #     end
+  #   end
+  # end
 
 end
